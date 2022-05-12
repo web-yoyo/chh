@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "vant": "^3.4.9",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.15"
   },
   "devDependencies": {
+    "@types/node": "^17.0.32",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "@vitejs/plugin-vue": "^2.3.1",

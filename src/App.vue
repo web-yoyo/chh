@@ -1,12 +1,8 @@
 <template>
-  <myHello />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <RouterView />
 </template>
 
-<script setup lang="ts">
-  import HelloWorld from './components/HelloWorld.vue'
-  import myHello from './components/my-hello.vue'
-</script>
+<script setup lang="ts"></script>
 
 <style>
   #app {
