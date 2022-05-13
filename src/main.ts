@@ -3,9 +3,10 @@ import App from './App.vue'
 import router from './router'
 // 计算设置rem的基准值，即html的font-size
 import 'amfe-flexible'
-import { Button, Tabbar, TabbarItem } from 'vant'
+import { registerGlobComp } from '/@/components/registerGlobComp'
 
 const app = createApp(App)
-app.use(router).use(Button).use(Tabbar).use(TabbarItem)
+registerGlobComp(app) //注册组件
+app.use(router)
 
 app.mount('#app')

@@ -1,6 +1,8 @@
 <template>
-  <h1>List</h1>
-  <MyHello />
+  <van-tabs v-model:active="active">
+    <van-tab title="标签 1" />
+    <van-tab title="标签 2" />
+  </van-tabs>
   <div class="main">
     <div class="item"></div>
     <div class="item"></div>
@@ -8,7 +10,8 @@
 </template>
 
 <script setup lang="ts">
-  import MyHello from '@/components/my-hello.vue'
+  import { ref } from 'vue'
+  const active = ref(0)
 </script>
 
 <style lang="scss">

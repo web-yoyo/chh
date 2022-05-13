@@ -1,10 +1,14 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-const path = require('path')
 
 import styleImport, { VantResolve } from 'vite-plugin-style-import'
 // Vite自身已经集成PostCSS，无需再次安装。另外也无需单独创建PostCSS配置文件，已集成到vite.config.js的css选项中
 import postCssPxToRem from 'postcss-pxtorem'
+import { resolve } from 'path'
+
+function pathResolve(dir: string) {
+  return resolve(process.cwd(), '.', dir)
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,9 +19,15 @@ export default defineConfig({
     }),
   ],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'), //设置别名
-    },
+    // alias: {
+    //   '@': path.resolve(__dirname, './src'), //设置别名
+    // },
+    alias: [
+      {
+        find: /@\//,
+        replacement: pathResolve('src') + '/',
+      },
+    ],
   },
   css: {
     postcss: {
