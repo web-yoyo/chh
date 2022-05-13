@@ -1,5 +1,20 @@
 import { App } from 'vue'
-import { Button, Tabbar, TabbarItem, Tab, Tabs } from 'vant'
+import {
+  Button,
+  Tabbar,
+  TabbarItem,
+  Tab,
+  Tabs,
+  Swipe,
+  SwipeItem,
+  List,
+  PullRefresh,
+  Cell,
+} from 'vant'
+
+const component = [Button, Tabbar, TabbarItem, Tab, Tabs, Swipe, SwipeItem, List, PullRefresh, Cell]
 export function registerGlobComp(app: App<Element>) {
-  app.use(Button).use(Tabbar).use(TabbarItem).use(Tab).use(Tabs)
+  component.map((item) => {
+    app.use(item)
+  })
 }
