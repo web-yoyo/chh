@@ -1,8 +1,8 @@
 <template>
   <NavSwipe />
   <van-tabs v-model:active="active" @change="onTabChange">
-    <van-tab title="标签 1" />
-    <van-tab title="标签 2" />
+    <van-tab title="标签 A" />
+    <van-tab title="标签 B" />
   </van-tabs>
   <div class="main">
     <HomeList ref="refHomelist" :active="active" />
