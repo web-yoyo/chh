@@ -62,6 +62,7 @@
     startAudio.value = true
     playing.value = audioState === 1 ? true : false
     audioState === -1 ? Toast('播放链接不存在！') : ''
+    audioState === 2 ? fetchMusicInfo() : ''
   }
 
   // 引入store模块

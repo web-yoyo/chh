@@ -29,6 +29,10 @@
     audio.value.onerror = (_err) => {
       emit('onAudioState', -1) // 通知父组件
     }
+    // 播放结束
+    audio.value.onended = (_err) => {
+      emit('onAudioState', 2) // 通知父组件
+    }
   })
 
   watch(
@@ -41,7 +45,7 @@
 </script>
 <template>
   <div class="audio-line">
-    <audio ref="audio" :src="props.url" controls>您的浏览器不支持 audio 元素。</audio>
+    <audio ref="audio" :src="props.url" controls autoplay>您的浏览器不支持 audio 元素。</audio>
   </div>
 </template>
 <style lang="scss" scoped>
