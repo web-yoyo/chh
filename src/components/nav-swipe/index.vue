@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
   import { getImagUrl } from '/@/utils/index'
-  const images = ['home01.png', 'home02.png']
+  const images = ['bdd01.png', 'bdd02.png', 'bdd03.png', 'bdd04.png']
 </script>
 <style lang="scss">
   .my-swipe .van-swipe-item {
@@ -17,7 +17,7 @@
     .img-bg {
       position: relative;
       width: 375px;
-      height: 200px;
+      height: 300px;
     }
     img {
       position: absolute;

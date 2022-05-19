@@ -16,7 +16,8 @@ const routes: Array<RouteRecordRaw> = [
           {
             path: '/home/list',
             name: 'list',
-            component: () => import('@/views/List/index.vue'),
+            // component: () => import('@/views/List/index.vue'),
+            component: () => import('@/views/Look/index.vue'),
           },
           {
             path: '/home/search',
@@ -26,7 +27,8 @@ const routes: Array<RouteRecordRaw> = [
           {
             path: '/home/look',
             name: 'look',
-            component: () => import('@/views/Look/index.vue'),
+            // component: () => import('@/views/Look/index.vue'),
+            component: () => import('@/views/List/index.vue'),
           },
           {
             path: '/home/about',

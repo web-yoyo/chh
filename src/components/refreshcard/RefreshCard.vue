@@ -47,8 +47,8 @@
       background: #fff5f1;
     }
     .icon {
-      width: 100px;
-      height: 100px;
+      width: 50px;
+      height: 50px;
       background: url('@/assets/img/refresh.png') no-repeat;
       background-size: contain;
     }
