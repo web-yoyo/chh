@@ -6,6 +6,7 @@
   </van-tabs>
   <div class="main">
     <HomeList ref="refHomelist" :active="active" />
+    <TuweiDialog />
   </div>
 </template>
 
@@ -13,6 +14,7 @@
   import { ref } from 'vue'
   import NavSwipe from '@/components/nav-swipe/index.vue'
   import HomeList from '@/components/home-list/index.vue'
+  import TuweiDialog from '@/components/tuwei-dialog.vue'
   const active = ref(0)
   const refHomelist = ref(null)
   const onTabChange = () => {

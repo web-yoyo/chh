@@ -1,74 +1,50 @@
 <template>
-  <van-form @failed="onFailed">
-    <van-cell-group inset>
-      <!-- 通过 pattern 进行正则校验 -->
-      <van-field
-        v-model="formData.userName"
-        label="用户名"
-        name="pattern"
-        placeholder="正则校验"
-        :rules="[{ pattern, message: '请输入正确内容' }]"
-      />
-      <!-- 通过 validator 进行函数校验 -->
-      <van-field
-        v-model="formData.passWord"
-        label="密码"
-        name="validator"
-        placeholder="函数校验"
-        :rules="[{ validator, message: '请输入正确内容' }]"
-      />
-      <!-- 通过 validator 返回错误提示 -->
-      <van-field
-        v-model="formData.type"
-        label="类型"
-        name="validatorMessage"
-        placeholder="校验函数返回错误提示"
-        :rules="[{ validator: validatorMessage }]"
-      />
-      <!-- 通过 validator 进行异步函数校验 -->
-      <van-field
-        v-model="formData.num"
-        label="数量"
-        name="asyncValidator"
-        placeholder="异步函数校验"
-        :rules="asyncRules"
-      />
-    </van-cell-group>
-    <div style="margin: 16px">
-      <van-button round block type="primary" native-type="submit"> 提交 </van-button>
-    </div>
-  </van-form>
+  <div class="search-home">
+    <div class="title"> 网易云热门评论</div>
+    <commentList :list="lyricList" @on-reset="onReset" @to-load="toLoad" />
+  </div>
+  <TestForm v-if="false" />
 </template>
 
 <script setup lang="ts">
-  import { reactive } from 'vue'
-  import { Toast } from 'vant'
-  const formData = reactive({
-    userName: '',
-    passWord: '',
-    type: '',
-    num: '',
-  })
-  const pattern = /\d{6}/
-  // 校验函数返回 true 表示校验通过，false 表示不通过
-  const validator = (val: string) => /1\d{10}/.test(val)
+  import { ref } from 'vue'
+  import TestForm from '@/components/form/test-form.vue'
+  import commentList from '@/components/comment-list.vue'
+  import { fetchIrc } from '/@/api/service'
 
-  // 校验函数可以直接返回一段错误提示
-  const validatorMessage = (val: any) => `${val} 不合法，请重新输入`
+  const lyricList = ref<string[]>([])
+  const getLyric = async (index) => {
+    const { data, status } = await fetchIrc()
+    if (status === 200) {
+      lyricList.value.splice(index, 1, data)
+    }
+  }
 
-  // 校验函数可以返回 Promise，实现异步校验
-  const asyncValidator = (val: string): object =>
-    new Promise((resolve) => {
-      Toast.loading('验证中...')
+  lyricList.value = new Array(16).fill(null)
 
-      setTimeout(() => {
-        Toast.clear()
-        resolve(val === '1234')
-      }, 1000)
-    })
-  const asyncRules: object[] = [{ validator: asyncValidator, message: '请输入正确内容' }]
+  const getLyricData = (initNum) => {
+    for (let i = initNum; i < initNum + 8; i++) {
+      getLyric(i)
+    }
+  }
+  let initNum = 0
+  getLyricData(initNum)
 
-  const onFailed = (errorInfo: any) => {
-    console.log('failed', errorInfo)
+  const onReset = () => {
+    lyricList.value = new Array(16).fill(null)
+    getLyricData((initNum = 0))
+  }
+  const toLoad = () => {
+    getLyricData((initNum = initNum + 8))
   }
 </script>
+
+<style lang="scss">
+  .search-home {
+    .title {
+      font-size: 28px;
+      text-align: center;
+      line-height: 108px;
+    }
+  }
+</style>

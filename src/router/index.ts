@@ -14,10 +14,9 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Home/index.vue'),
         children: [
           {
-            path: '/home/list',
-            name: 'list',
-            // component: () => import('@/views/List/index.vue'),
-            component: () => import('@/views/Look/index.vue'),
+            path: '/home/music',
+            name: 'music',
+            component: () => import('@/views/music/index.vue'),
           },
           {
             path: '/home/search',
@@ -25,9 +24,8 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import('@/views/Search/index.vue'),
           },
           {
-            path: '/home/look',
-            name: 'look',
-            // component: () => import('@/views/Look/index.vue'),
+            path: '/home/list',
+            name: 'list',
             component: () => import('@/views/List/index.vue'),
           },
           {
@@ -35,7 +33,7 @@ const routes: Array<RouteRecordRaw> = [
             name: 'about',
             component: () => import('@/views/About/index.vue'),
           },
-          { path: '', component: () => import('@/views/Look/index.vue') },
+          { path: '', component: () => import('@/views/music/index.vue') },
         ],
       },
     ],

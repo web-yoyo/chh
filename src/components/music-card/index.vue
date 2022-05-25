@@ -46,7 +46,7 @@
   const fetchMusicInfo = async () => {
     const { data } = await fetchRandMusic()
     musicIndex.loading = false
-    // indexRec.noData = data.code !== 1
+    musicIndex.noData = data.code !== 1
     musicIndex.musicData = data.data
     console.log(musicIndex, 'musicIndex')
   }

@@ -13,6 +13,7 @@ import {
   Form,
   Field,
   CellGroup,
+  Dialog,
 } from 'vant'
 
 const component = [
@@ -29,6 +30,7 @@ const component = [
   Form,
   Field,
   CellGroup,
+  Dialog,
 ]
 export function registerGlobComp(app: App<Element>) {
   component.map((item) => {
