@@ -10,17 +10,18 @@
       </div>
       <div v-if="!playing" class="pause-icon"></div>
     </div>
-    <div class="title">{{ isMySelf ? '为人民服务' : musicData.name }}</div>
+    <div class="title">{{ musicData.name }}</div>
     <div class="author">{{ isMySelf ? '李志' : musicData.artistsname }}</div>
 
     <component
       :is="musicData.url && AudioLine"
-      :url="isMySelf ? getAudioUrl('人民不需要自由') : musicData.url"
+      :url="musicData.url"
       :playing="playing"
       @on-audio-state="onAudioState"
     />
 
-    <component :is="!loading && RefreshCard" />
+    <component :is="!isMySelf && !loading && RefreshCard" />
+    <component :is="isMySelf && Lizhi" @get-item="getItem" />
   </div>
 </template>
 <script setup lang="ts">
@@ -29,6 +30,7 @@
   import { HomeHooksModel } from '/@/model/HomeModel'
   import AudioLine from '@/components/audio-line/AudioLine.vue'
   import RefreshCard from '@/components/refreshcard/RefreshCard.vue'
+  import Lizhi from '@/components/lizhi.vue'
   import { Toast } from 'vant'
   import { refreshStore } from '/@/stores/index'
   import { useRouter } from 'vue-router'
@@ -93,11 +95,18 @@
     (val) => {
       isMySelf.value = val.path === '/home/about' ? true : false
     },
+    { immediate: true },
   )
 
   // 重新加载数据
   const retryData = () => {
     fetchMusicInfo()
+  }
+
+  const getItem = (name) => {
+    musicIndex.musicData.url = getAudioUrl(name)
+    musicIndex.musicData.name = name
+    console.log(name)
   }
 
   toRefs(musicIndex)
