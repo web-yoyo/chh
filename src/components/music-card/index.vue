@@ -1,6 +1,6 @@
 <template>
   <div class="music-card">
-    <h1 class="top-title">李志专区</h1>
+    <h1 class="top-title" v-if="isMySelf">李志专区</h1>
     <div class="player" @click="clickPoster()">
       <div class="lead-icon" :class="{ 'lead-active': playing }"></div>
       <div class="rotate-block" :class="{ start: startAudio, active: playing, pause: !playing }">
@@ -15,7 +15,7 @@
 
     <component
       :is="musicData.url && AudioLine"
-      :url="isMySelf ? getAudioUrl('test') : musicData.url"
+      :url="isMySelf ? getAudioUrl('人民不需要自由') : musicData.url"
       :playing="playing"
       @on-audio-state="onAudioState"
     />
