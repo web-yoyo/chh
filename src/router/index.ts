@@ -30,8 +30,8 @@ const routes: Array<RouteRecordRaw> = [
           },
           {
             path: '/home/about',
-            name: 'about',
-            component: () => import('@/views/About/index.vue'),
+            name: 'About',
+            component: () => import('@/views/Music/index.vue'),
           },
           { path: '', component: () => import('@/views/Music/index.vue') },
         ],

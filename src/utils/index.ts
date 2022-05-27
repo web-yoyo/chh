@@ -1,6 +1,7 @@
 export const getImagUrl = (name: string) => {
   return new URL(`../assets/img/${name}`, import.meta.url).href
 }
+export const getAudioUrl = (name) => new URL(`../assets/audio/${name}.mp3`, import.meta.url).href
 
 // 函数返回 min（包含）～ max（包含）之间的数字：
 export const getRndInteger = (min: number, max: number): number => {

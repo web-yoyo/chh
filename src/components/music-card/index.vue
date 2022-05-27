@@ -1,18 +1,21 @@
 <template>
   <div class="music-card">
+    <h1 class="top-title">李志专区</h1>
     <div class="player" @click="clickPoster()">
       <div class="lead-icon" :class="{ 'lead-active': playing }"></div>
       <div class="rotate-block" :class="{ start: startAudio, active: playing, pause: !playing }">
-        <img :src="musicData.picurl" />
+        <template v-if="!isMySelf">
+          <img :src="musicData.picurl" />
+        </template>
       </div>
       <div v-if="!playing" class="pause-icon"></div>
     </div>
-    <div class="title">{{ musicData.name }}</div>
-    <div class="author">{{ musicData.artistsname }}</div>
+    <div class="title">{{ isMySelf ? '为人民服务' : musicData.name }}</div>
+    <div class="author">{{ isMySelf ? '李志' : musicData.artistsname }}</div>
 
     <component
       :is="musicData.url && AudioLine"
-      :url="musicData.url"
+      :url="isMySelf ? getAudioUrl('test') : musicData.url"
       :playing="playing"
       @on-audio-state="onAudioState"
     />
@@ -28,6 +31,9 @@
   import RefreshCard from '@/components/refreshcard/RefreshCard.vue'
   import { Toast } from 'vant'
   import { refreshStore } from '/@/stores/index'
+  import { useRouter } from 'vue-router'
+  import { getAudioUrl } from '/@/utils'
+  const router = useRouter()
   const musicIndex = reactive<HomeHooksModel>({
     musicData: {},
     noData: false,
@@ -40,7 +46,9 @@
   const startAudio = ref(false)
 
   onMounted(() => {
-    fetchMusicInfo()
+    if (!isMySelf.value) {
+      fetchMusicInfo()
+    }
   })
   // 查询随机音乐信息
   const fetchMusicInfo = async () => {
@@ -79,6 +87,14 @@
     },
   )
 
+  let isMySelf = ref<boolean>(false)
+  watch(
+    () => router.currentRoute.value,
+    (val) => {
+      isMySelf.value = val.path === '/home/about' ? true : false
+    },
+  )
+
   // 重新加载数据
   const retryData = () => {
     fetchMusicInfo()
@@ -88,6 +104,14 @@
 </script>
 <style scoped lang="scss">
   .music-card {
+    .top-title {
+      text-align: center;
+      font-size: 26px;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
     .player {
       width: 100%;
       display: flex;
