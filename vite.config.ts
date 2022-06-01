@@ -31,12 +31,19 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    open: true,
+    open: false,
     proxy: {
       '/api': {
         target: 'https://api.uomg.com/',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false,
+        // rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/vvhan': {
+        target: 'https://api.vvhan.com/api/',
+        secure: false,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/vvhan/, ''),
       },
     },
   },

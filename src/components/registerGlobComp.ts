@@ -14,6 +14,7 @@ import {
   Field,
   CellGroup,
   Dialog,
+  Popup,
 } from 'vant'
 
 const component = [
@@ -31,6 +32,7 @@ const component = [
   Field,
   CellGroup,
   Dialog,
+  Popup,
 ]
 export function registerGlobComp(app: App<Element>) {
   component.map((item) => {

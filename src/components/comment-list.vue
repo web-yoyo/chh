@@ -20,10 +20,12 @@
       </div>
     </div>
   </div>
+  <DialogWerther />
 </template>
 
 <script setup lang="ts">
   import { ref } from 'vue'
+  import DialogWerther from '@/components/dialog-werther.vue'
   const props: any = defineProps({
     list: {
       type: Array,
