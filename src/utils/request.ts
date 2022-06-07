@@ -5,6 +5,7 @@ import { Toast } from 'vant'
 // axios.defaults.headers.common['area-code'] = 'CWHT'
 // 创建 axios 实例
 const request = axios.create({
+  baseURL: 'https://api.uomg.com',
   timeout: 10000, // 请求超时时间
 })
 
