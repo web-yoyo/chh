@@ -2,6 +2,7 @@ import request from '/@/utils/request'
 import https from '/@/utils/https'
 import { URL } from '/@/config/config'
 const prefixUrl = 'https://api.uomg.com'
+const prefixBUrl = 'https://api.vvhan.com/api'
 
 // 获取随机音乐信息
 export const fetchRandMusic = () => {
@@ -11,9 +12,7 @@ export const fetchRandMusic = () => {
     prefixUrl,
   })
 }
-// export const fetchRandMusic = () => {
-//   return request.get('/api/rand.music?sort=热歌榜&format=json')
-// }
+
 // 获取随机土味情话
 export const fetchTuweiLang = () => {
   return request.get(`${URL.musicUrl}/rand.qinghua?format=json`)
@@ -32,8 +31,7 @@ export const fetchYiju = () => {
   return https({
     url: '/vvhan/en?type=sj',
     method: 'GET',
+    isDel: true,
+    prefixUrl: prefixBUrl,
   })
 }
-// export const fetchYiju = () => {
-//   return request.get(`/vvhan/en?type=sj`)
-// }

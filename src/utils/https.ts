@@ -9,6 +9,7 @@ type OptionParams = {
   contentType?: 'json' | 'urlencoded' | 'multipart'
   prefixUrl?: string
   options?: any
+  isDel?: boolean
 }
 
 const contentTypes = {
@@ -42,12 +43,17 @@ const https = ({
   options = {},
   contentType = 'json', // json || urlencoded || multipart
   prefixUrl = '',
+  isDel = false,
 }: OptionParams) => {
+  const isDev = import.meta.env.MODE === 'development'
   if (!url) {
     const error = new Error('请传入url')
     return Promise.reject(error)
   }
-  import.meta.env.MODE !== 'development' ? prefixUrl : (prefixUrl = '')
+  if (isDel && !isDev) {
+    url = url.replace(/^\/.*?\//, '/')
+  }
+  !isDev ? prefixUrl : (prefixUrl = '')
   const fullUrl = `/${prefixUrl}${url}`
   console.log(fullUrl, 'fullUrl')
 
@@ -87,8 +93,6 @@ const https = ({
   axios.interceptors.request.use((request: any) => {
     // 移除起始部分 / 所有请求url走相对路径
     request.url = request.url.replace(/^\//, '')
-    console.log(request.url)
-
     return request
   })
 
@@ -98,8 +102,6 @@ const https = ({
   })
     .then((response) => {
       const { data } = response
-      console.log(data, 'response')
-
       if (data.code === 'xxx') {
         // 与服务端约定
         // 登录校验失败
