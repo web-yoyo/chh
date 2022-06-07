@@ -1,10 +1,8 @@
 <template>
-  <Router-View />
+  <router-view />
 </template>
 
-<script setup lang="ts">
-  console.log(import.meta.env.MODE)
-</script>
+<script setup lang="ts"></script>
 
 <style>
   #app {

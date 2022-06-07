@@ -26,7 +26,7 @@
     pic: '',
   })
   const getfetchYiju = async () => {
-    const { data } = await fetchYiju()
+    const data = await fetchYiju()
     const objData = data.data || {}
     yijuData.zh = objData.zh
     yijuData.en = objData.en

@@ -54,11 +54,10 @@
   })
   // 查询随机音乐信息
   const fetchMusicInfo = async () => {
-    const { data } = await fetchRandMusic()
+    const { data, code } = await fetchRandMusic()
     musicIndex.loading = false
-    musicIndex.noData = data.code !== 1
-    musicIndex.musicData = data.data
-    console.log(musicIndex, 'musicIndex')
+    musicIndex.noData = code !== 1
+    musicIndex.musicData = data
   }
 
   // 点击海报区域
