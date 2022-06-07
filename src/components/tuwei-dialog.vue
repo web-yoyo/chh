@@ -7,22 +7,20 @@
   import { fetchTuweiLang } from '/@/api/service'
   onMounted(() => {
     fetchTuweiLang().then((res) => {
-      let { data } = res
-      if (data.code === 1) {
+      if (res.code === 1) {
         Dialog.alert({
-          message: data.content,
+          message: res.content,
           cancelButtonText: '关闭',
           confirmButtonText: '复制',
           showCancelButton: true,
         })
           .then(() => {
-            copy(data.content)
+            copy(res.content)
           })
           .catch(() => {
             console.log('2')
           })
       }
-      console.log(res)
     })
   })
 

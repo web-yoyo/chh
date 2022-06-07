@@ -1,6 +1,4 @@
-import request from '/@/utils/request'
 import https from '/@/utils/https'
-import { URL } from '/@/config/config'
 const prefixUrl = 'https://api.uomg.com'
 const prefixBUrl = 'https://api.vvhan.com/api'
 
@@ -15,15 +13,27 @@ export const fetchRandMusic = () => {
 
 // 获取随机土味情话
 export const fetchTuweiLang = () => {
-  return request.get(`${URL.musicUrl}/rand.qinghua?format=json`)
+  return https({
+    url: '/api/rand.qinghua?format=json',
+    method: 'GET',
+    prefixUrl,
+  })
 }
 // 获取随机照片
 export const fetchImg = (type) => {
-  return request.get(`${URL.musicUrl}/rand.avatar?sort=${type}&format=json`)
+  return https({
+    url: `/api/rand.avatar?sort=${type}&format=json`,
+    method: 'GET',
+    prefixUrl,
+  })
 }
 // 获取随机网易云评论
 export const fetchIrc = () => {
-  return request.get(`${URL.musicUrl}/comments.163?format=text`)
+  return https({
+    url: `/api/comments.163?format=text`,
+    method: 'GET',
+    prefixUrl,
+  })
 }
 
 //获取随机一句话
@@ -31,7 +41,7 @@ export const fetchYiju = () => {
   return https({
     url: '/vvhan/en?type=sj',
     method: 'GET',
-    isDel: true,
+    isDelProd: true, //是否在生产环境删除前缀/xxx/
     prefixUrl: prefixBUrl,
   })
 }

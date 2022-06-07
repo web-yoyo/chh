@@ -17,9 +17,9 @@
     }
   })
 
-  const ImgType = ['男', '女', '动漫男', '动漫女']
+  const ImgType = ['男', '女']
   const getImg = async (index) => {
-    const { data } = await fetchImg(ImgType[getRndInteger(0, 3)])
+    const data = await fetchImg(ImgType[getRndInteger(0, 1)])
     if (data.code === 1) {
       images.splice(index, 1, data.imgurl)
     }

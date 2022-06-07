@@ -14,10 +14,8 @@
 
   const lyricList = ref<string[]>([])
   const getLyric = async (index) => {
-    const { data, status } = await fetchIrc()
-    if (status === 200) {
-      lyricList.value.splice(index, 1, data)
-    }
+    const data = await fetchIrc()
+    lyricList.value.splice(index, 1, data)
   }
 
   lyricList.value = new Array(16).fill(null)

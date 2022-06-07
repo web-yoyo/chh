@@ -9,7 +9,7 @@ type OptionParams = {
   contentType?: 'json' | 'urlencoded' | 'multipart'
   prefixUrl?: string
   options?: any
-  isDel?: boolean
+  isDelProd?: boolean
 }
 
 const contentTypes = {
@@ -43,20 +43,18 @@ const https = ({
   options = {},
   contentType = 'json', // json || urlencoded || multipart
   prefixUrl = '',
-  isDel = false,
+  isDelProd = false,
 }: OptionParams) => {
   const isDev = import.meta.env.MODE === 'development'
   if (!url) {
     const error = new Error('请传入url')
     return Promise.reject(error)
   }
-  if (isDel && !isDev) {
+  if (isDelProd && !isDev) {
     url = url.replace(/^\/.*?\//, '/')
   }
   !isDev ? prefixUrl : (prefixUrl = '')
   const fullUrl = `/${prefixUrl}${url}`
-  console.log(fullUrl, 'fullUrl')
-
   const newOptions = {
     ...defaultOptions,
     ...options,
@@ -111,6 +109,9 @@ const https = ({
         // router.replace({ path: '/403' })
       } else if (data.code === 1 || data.success) {
         // 与服务端约定
+        return Promise.resolve(data)
+      } else if (data) {
+        //接口临时设置 todo
         return Promise.resolve(data)
       } else {
         const { message } = data
