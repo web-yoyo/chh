@@ -9,9 +9,10 @@
           @load="onLoad"
         >
           <van-cell
-            v-for="(item, index) in props.active === 0 ? list : list_B"
+            v-for="(item, index) in list"
             :key="index"
-            :title="item"
+            :title="item.title"
+            @click="openHot(item.url)"
           />
         </van-list>
       </van-pull-refresh>
@@ -21,42 +22,35 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  const props = defineProps({
-    active: {
-      type: Number,
-      default: 0,
-    },
-  })
-  const list = ref<number[]>([])
-  const list_B = ref<string[]>([])
+  import { fetchWbhot } from '/@/api/service'
+
+  interface listType {
+    title: string
+    url: string
+  }
+  let list = ref<listType[]>([])
   const loading = ref(false)
   const finished = ref(false)
   const refreshing = ref(false)
 
   const onLoad = () => {
-    setTimeout(() => {
-      if (refreshing.value) {
-        list.value = []
-        list_B.value = []
-        refreshing.value = false
+    if (refreshing.value) {
+      list.value = []
+      refreshing.value = false
+    }
+    fetchWbhot().then(({ data, success }) => {
+      if (success) {
+        list.value = data
       }
-
-      if (props.active === 0) {
-        for (let i = 0; i < 10; i++) {
-          list.value.push(list.value.length + 1)
-        }
-      } else {
-        for (let i = 0; i < 10; i++) {
-          list_B.value.push(list_B.value.length + 1 + 'B')
-        }
-      }
-
       loading.value = false
-
-      if (list.value.length >= 40 || list_B.value.length >= 40) {
+      if (list.value.length >= 50) {
         finished.value = true
       }
-    }, 500)
+    })
+  }
+
+  const openHot = (url) => {
+    window.location.href = url
   }
 
   const onRefresh = () => {

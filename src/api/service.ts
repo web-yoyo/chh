@@ -45,3 +45,12 @@ export const fetchYiju = () => {
     prefixUrl: prefixBUrl,
   })
 }
+//获取微博热搜
+export const fetchWbhot = () => {
+  return https({
+    url: '/vvhan/wbhot',
+    method: 'GET',
+    isDelProd: true, //是否在生产环境删除前缀/xxx/
+    prefixUrl: prefixBUrl,
+  })
+}

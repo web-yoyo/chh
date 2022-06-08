@@ -62,7 +62,6 @@
     // 将 loading 设置为 true，表示处于加载状态
     loading.value = true
     onLoad()
-    console.log('onRefresh')
   }
 </script>
 

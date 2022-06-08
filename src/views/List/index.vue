@@ -1,10 +1,7 @@
 <template>
   <NavSwipe />
-  <van-tabs v-model:active="active" @change="onTabChange">
-    <van-tab title="无他~" />
-    <van-tab title="与你~" />
-  </van-tabs>
   <div class="main">
+    <van-nav-bar class="hot-title" title="微博热搜" />
     <HomeList ref="refHomelist" :active="active" />
     <TuweiDialog />
   </div>
@@ -17,15 +14,13 @@
   import TuweiDialog from '@/components/tuwei-dialog.vue'
   const active = ref(0)
   const refHomelist = ref(null)
-  const onTabChange = () => {
-    ;(refHomelist as any).value.onRefresh()
-  }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .main {
-    display: flex;
-    justify-content: space-between;
+    :deep().van-nav-bar__title {
+      color: #e31818;
+    }
     .item {
       width: 100px;
       height: 100px;

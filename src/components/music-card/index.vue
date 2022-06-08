@@ -105,7 +105,6 @@
   const getItem = (name) => {
     musicIndex.musicData.url = getAudioUrl(name)
     musicIndex.musicData.name = name
-    console.log(name)
   }
 
   toRefs(musicIndex)
