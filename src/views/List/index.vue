@@ -14,12 +14,15 @@
   import TuweiDialog from '@/components/tuwei-dialog.vue'
   const active = ref(0)
   const refHomelist = ref(null)
+  const style = {
+    color: '#e31818',
+  }
 </script>
 
 <style lang="scss" scoped>
   .main {
     :deep().van-nav-bar__title {
-      color: #e31818;
+      color: v-bind('style.color');
     }
     .item {
       width: 100px;

@@ -19,7 +19,6 @@
   }
 
   lyricList.value = new Array(16).fill(null)
-
   const getLyricData = (initNum) => {
     for (let i = initNum; i < initNum + 8; i++) {
       getLyric(i)
