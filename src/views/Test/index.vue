@@ -14,7 +14,7 @@
 <script setup lang="ts">
   import { ref, watch, nextTick } from 'vue'
   let inputVal = ref('')
-  let str = ref('aabbcjdhah哈哈是的我')
+  let str = ref('aabbcjdhah哈哈是的我adjjjwonskfmfcks')
 
   watch(inputVal, (val) => {
     let dom = document.querySelector('.text') as HTMLImageElement
