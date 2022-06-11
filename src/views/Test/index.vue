@@ -50,18 +50,19 @@
 
       // 光标移至最后
       range.collapseToEnd()
-    } else if (document.selection) {
-      //ie10 9 8 7 6 5
-      // 创建选择对象
-      let range = document.selection.createRange()
-
-      //range定位到obj
-      range.moveToElementText(obj)
-
-      //光标移至最后
-      range.collapse(false)
-      range.select()
     }
+    // else if (document.selection) {
+    //   //ie10 9 8 7 6 5
+    //   // 创建选择对象
+    //   let range = document.selection.createRange()
+
+    //   //range定位到obj
+    //   range.moveToElementText(obj)
+
+    //   //光标移至最后
+    //   range.collapse(false)
+    //   range.select()
+    // }
   }
 
   const renderText = (val = '') => {
