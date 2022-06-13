@@ -54,7 +54,7 @@
     "mock/**/*.ts",
     "vite.config.ts",
     "src/settings/dist/theme.js",
-    "src/tools.js"
+    "src/tools.js",
   ],
   "exclude": [
     "node_modules",

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-import { debounce } from './debounce.js'
+// import { debounce } from './debounce'
 
 type OptionParams = {
   url: string
@@ -18,12 +18,12 @@ const contentTypes = {
   multipart: 'multipart/form-data',
 }
 
-function toastMsg() {
-  Object.keys(errorMsgObj).map((item) => {
-    // Message.error(item)
-    delete errorMsgObj[item]
-  })
-}
+// function toastMsg() {
+//   Object.keys(errorMsgObj).map((item) => {
+//     // Message.error(item)
+//     delete errorMsgObj[item]
+//   })
+// }
 
 const errorMsgObj = {}
 
@@ -118,7 +118,7 @@ const https = ({
         if (!errorMsgObj[message]) {
           errorMsgObj[message] = message
         }
-        setTimeout(debounce(toastMsg, 1000, true), 1000)
+        // setTimeout(debounce(toastMsg, 1000, true, this), 1000)
         return Promise.reject(data)
       }
     })
@@ -136,7 +136,7 @@ const https = ({
         if (!errorMsgObj[resMsg]) {
           errorMsgObj[resMsg] = resMsg
         }
-        setTimeout(debounce(toastMsg, 1000, true), 1000)
+        // setTimeout(debounce(toastMsg, 1000, true, this), 1000)
         const err = { code: resCode, respMsg: resMsg }
         return Promise.reject(err)
       } else {
