@@ -11,7 +11,7 @@
 -->
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { refreshStore } from '/@/stores/index'
+  import { refreshStore } from '@/stores/index'
   const refresher = refreshStore()
   const rolling = ref(false)
 

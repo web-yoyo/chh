@@ -43,7 +43,7 @@
 <script setup lang="ts">
   import { reactive } from 'vue'
   import { Toast } from 'vant'
-  import { fetchIrc } from '/@/api/service'
+  import { fetchIrc } from '@/api/service'
   const formData = reactive({
     userName: '',
     passWord: '',

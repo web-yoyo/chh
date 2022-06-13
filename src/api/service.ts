@@ -1,4 +1,4 @@
-import https from '/@/utils/https'
+import https from '@/utils/https'
 const prefixUrl = 'https://api.uomg.com'
 const prefixBUrl = 'https://api.vvhan.com/api'
 

@@ -33,7 +33,6 @@
     nextTick(() => {
       keepCursorEnd(e.target)
     })
-    console.log(textareaContent)
   }
   // 将光标重新定位到内容最后
   const keepCursorEnd = (obj) => {
@@ -67,7 +66,7 @@
 
   const renderText = (val = '') => {
     let dom = document.querySelector('.text') as HTMLImageElement
-    val && (str.value = str.value.replaceAll(val, `<span style="color:red">${val}</span>`))
+    val && (str.value = str.value.replaceAll(val, `<span class="tag">${val}</span>`))
     nextTick(() => {
       dom.innerHTML = str.value
     })
@@ -75,6 +74,8 @@
 </script>
 <style lang="scss">
   .text {
-    // color: red;
+    .tag {
+      color: aqua;
+    }
   }
 </style>

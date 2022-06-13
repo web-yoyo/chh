@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 // 计算设置rem的基准值，即html的font-size
 import 'amfe-flexible'
-import { registerGlobComp } from '/@/components/registerGlobComp'
+import { registerGlobComp } from '@/components/registerGlobComp'
 import { createPinia } from 'pinia'
 
 const pinia = createPinia()

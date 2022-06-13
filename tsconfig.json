@@ -30,8 +30,11 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "paths": {
-      "/@/*": [
-        "src/*"
+      "@": [
+        "./src"
+      ],
+      "@/*": [
+        "./src/*"
       ],
       "/#/*": [
         "types/*"

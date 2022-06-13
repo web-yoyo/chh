@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
   import { ref, onMounted, reactive } from 'vue'
-  import { fetchYiju } from '/@/api/service'
+  import { fetchYiju } from '@/api/service'
 
   const show = ref(true)
 

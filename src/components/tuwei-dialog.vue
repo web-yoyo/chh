@@ -4,7 +4,7 @@
 <script setup lang="ts">
   import { onMounted } from 'vue'
   import { Dialog } from 'vant'
-  import { fetchTuweiLang } from '/@/api/service'
+  import { fetchTuweiLang } from '@/api/service'
   onMounted(() => {
     fetchTuweiLang().then((res) => {
       if (res.code === 1) {

@@ -10,7 +10,7 @@
   import { ref } from 'vue'
   import TestForm from '@/components/form/test-form.vue'
   import commentList from '@/components/comment-list.vue'
-  import { fetchIrc } from '/@/api/service'
+  import { fetchIrc } from '@/api/service'
 
   const lyricList = ref<string[]>([])
   const getLyric = async (index) => {

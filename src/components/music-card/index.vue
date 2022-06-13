@@ -26,15 +26,15 @@
 </template>
 <script setup lang="ts">
   import { ref, reactive, toRefs, onMounted, watch, computed } from 'vue'
-  import { fetchRandMusic } from '/@/api/service'
-  import { HomeHooksModel } from '/@/model/HomeModel'
+  import { fetchRandMusic } from '@/api/service'
+  import { HomeHooksModel } from '@/model/HomeModel'
   import AudioLine from '@/components/audio-line/AudioLine.vue'
   import RefreshCard from '@/components/refreshcard/RefreshCard.vue'
   import Lizhi from '@/components/lizhi.vue'
   import { Toast } from 'vant'
-  import { refreshStore } from '/@/stores/index'
+  import { refreshStore } from '@/stores/index'
   import { useRouter } from 'vue-router'
-  import { getAudioUrl } from '/@/utils'
+  import { getAudioUrl } from '@/utils'
   const router = useRouter()
   const musicIndex = reactive<HomeHooksModel>({
     musicData: {},

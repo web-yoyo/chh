@@ -8,8 +8,8 @@
 
 <script setup lang="ts">
   import { onMounted } from 'vue'
-  import { getImagUrl, getRndInteger } from '/@/utils/index'
-  import { fetchImg } from '/@/api/service'
+  import { getImagUrl, getRndInteger } from '@/utils/index'
+  import { fetchImg } from '@/api/service'
   const images = ['bdd01.png', 'bdd02.png', 'bdd03.png', 'bdd04.png']
   onMounted(() => {
     for (let i = 0; i < 4; i++) {

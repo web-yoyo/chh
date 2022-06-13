@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { fetchWbhot } from '/@/api/service'
+  import { fetchWbhot } from '@/api/service'
 
   interface listType {
     title: string
