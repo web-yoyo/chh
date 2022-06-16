@@ -7,7 +7,8 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .vue,.js ./",
-    "lint:fix": "eslint --fix --ext .vue,.js ./"
+    "lint:fix": "eslint --fix --ext .vue,.js ./",
+    "tsc":"tsc --noEmit"
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",

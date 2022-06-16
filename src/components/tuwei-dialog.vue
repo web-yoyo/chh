@@ -25,12 +25,13 @@
   })
 
   const copy = (data) => {
-    let input = document.createElement('input')
-    input.value = data
-    input.id = 'creatDom'
-    document.body.appendChild(input)
-    input.select()
-    document.execCommand('copy')
-    document.body.removeChild(input)
+    navigator.clipboard.writeText(data)
+    // let input = document.createElement('input')
+    // input.value = data
+    // input.id = 'creatDom'
+    // document.body.appendChild(input)
+    // input.select()
+    // document.execCommand('copy')
+    // document.body.removeChild(input)
   }
 </script>
