@@ -25,18 +25,12 @@
   })
 
   const copy = (data) => {
-    if (navigator.clipboard && window.isSecureContext) {
-      console.log('clipboard')
-      navigator.clipboard.writeText(data)
-    } else {
-      console.log('execCommand')
-      let input = document.createElement('input')
-      input.value = data
-      input.id = 'creatDom'
-      document.body.appendChild(input)
-      input.select()
-      document.execCommand('copy')
-      document.body.removeChild(input)
-    }
+    let input = document.createElement('input')
+    input.value = data
+    input.id = 'creatDom'
+    document.body.appendChild(input)
+    input.select()
+    document.execCommand('copy')
+    document.body.removeChild(input)
   }
 </script>
