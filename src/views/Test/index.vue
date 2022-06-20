@@ -9,10 +9,17 @@
     style="border: 1px solid #dddddd; width: 360px; min-height: 20px; _height: 20px; outline: 0px"
     >{{ str }}</div
   >
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">111</div>
+      <div class="swiper-slide">222</div>
+      <div class="swiper-slide">333</div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, nextTick } from 'vue'
+  import { ref, watch, nextTick, onMounted } from 'vue'
   let inputVal = ref('')
   let str = ref('aabbcjdhah哈哈是的我adjjjwonskfmfcks')
 
@@ -71,6 +78,19 @@
       dom.innerHTML = str.value
     })
   }
+
+  onMounted(() => {
+    const mySwiperDom = document.querySelector('.mySwiper') as HTMLImageElement
+    const slideDom = document.querySelector('.swiper-slide') as HTMLImageElement
+    mySwiperDom.addEventListener('ontouchstart', ontouchstart)
+    slideDom.addEventListener('ontouchmove', ontouchmove)
+    function ontouchstart() {
+      console.log('ontouchstart--111')
+    }
+    function ontouchmove() {
+      console.log('ontouchmove--111')
+    }
+  })
 </script>
 <style lang="scss">
   .text {

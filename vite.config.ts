@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-
+import { viteVConsole } from 'vite-plugin-vconsole'
 import styleImport, { VantResolve } from 'vite-plugin-style-import'
 // Vite自身已经集成PostCSS，无需再次安装。另外也无需单独创建PostCSS配置文件，已集成到vite.config.js的css选项中
 import postCssPxToRem from 'postcss-pxtorem'
@@ -12,6 +12,15 @@ export default defineConfig({
     vue(),
     styleImport({
       resolves: [VantResolve()],
+    }),
+    viteVConsole({
+      entry: path.resolve('src/main.ts'), // 或者可以使用这个配置: [path.resolve('src/main.ts')]
+      localEnabled: true,
+      enabled: true,
+      config: {
+        maxLogNumber: 1000,
+        theme: 'dark',
+      },
     }),
   ],
   resolve: {
