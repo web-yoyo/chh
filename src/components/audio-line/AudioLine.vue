@@ -5,7 +5,7 @@
 <script setup lang="ts">
   import { ref, onMounted, watch } from 'vue'
   // 接收props
-  const props = defineProps<{ url: string; playing: false }>()
+  const props = defineProps<{ url: string; playing: boolean }>()
   // 定义emit
   const emit = defineEmits<{
     (e: 'onAudioState', audioState: number): void

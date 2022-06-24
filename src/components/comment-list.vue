@@ -42,7 +42,6 @@
     (e: 'toLoad'): void
   }>()
   const onLoad = () => {
-    console.log('onLoad')
     if (refreshing.value) {
       emit('onReset')
       setTimeout(() => {
