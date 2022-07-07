@@ -23,6 +23,7 @@
     },
     { immediate: true },
   )
+  console.log(navigator.userAgent, 'navigator.userAgent')
 
   const onChange = (index: string | number) => {
     router.push(tabbarPath[index])
